@@ -1,0 +1,4 @@
+/target
+*.note
+*.lock
+.vscode/
