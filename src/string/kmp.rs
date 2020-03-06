@@ -1,13 +1,13 @@
 use bio::io::fasta;
 use std::iter::repeat;
-
+  
 // based on rust-bio
 fn lps(pattern: &[u8]) -> Vec<usize> {
   let (m, mut q) = (pattern.len(), 0);
   let mut lps = repeat(0).take(m).collect::<Vec<usize>>();
   for i in 1..m {
-    if q > 0 && pattern[q] != pattern[i] {
-      q = 0;
+    while q > 0 && pattern[q] != pattern[i] {
+      q = lps[q - 1];
     }
     if pattern[q] == pattern[i] {
       q += 1;
