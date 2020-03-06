@@ -1,6 +1,6 @@
 use bio::io::fasta;
 use std::iter::repeat;
-  
+
 // based on rust-bio
 fn lps(pattern: &[u8]) -> Vec<usize> {
   let (m, mut q) = (pattern.len(), 0);
