@@ -1,5 +1,6 @@
 pub mod cat;
 pub mod mmch;
+pub mod motz;
 
 pub fn factorial(num: u64) -> u128 {
   match num {
