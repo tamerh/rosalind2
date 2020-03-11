@@ -2,17 +2,17 @@ use bio::io::fasta;
 use std::cmp;
 use std::collections::HashMap;
 
-struct Searcher<'s> {
-  seq1: &'s [u8],
-  seq2: &'s [u8],
-  cache: HashMap<(usize, usize), Vec<u8>>,
+pub struct Searcher<'s> {
+  pub seq1: &'s [u8],
+  pub seq2: &'s [u8],
+  pub cache: HashMap<(usize, usize), Vec<u8>>,
 }
 
 impl<'s> Searcher<'s> {
   // longest common subsequence algorithm with recursion and cache
-  fn lcsq(&mut self, i: usize, j: usize) -> Vec<u8> {
+  pub fn lcsq(&mut self, i: usize, j: usize) -> Vec<u8> {
     let mut out = Vec::<u8>::new();
-    if self.seq1.len() == i + 1 || self.seq2.len() == j + 1 {
+    if i >= self.seq1.len() || j >= self.seq2.len() {
       return out;
     }
     if self.seq1[i] == self.seq2[j] {
@@ -41,7 +41,7 @@ impl<'s> Searcher<'s> {
   }
 
   fn lcsq_len(&mut self, i: usize, j: usize) -> usize {
-    if self.seq1.len() == i + 1 || self.seq2.len() == j + 1 {
+    if i >= self.seq1.len() || j >= self.seq2.len() {
       return 0;
     }
     if self.seq1[i] == self.seq2[j] {
@@ -66,4 +66,5 @@ pub fn solve() {
     cache: HashMap::<(usize, usize), Vec<u8>>::new(),
   };
   println!("{}", String::from_utf8(searcher.lcsq(0, 0)).unwrap());
+  println!("LCSQ length  {}", searcher.lcsq_len(0, 0));
 }

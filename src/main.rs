@@ -6,6 +6,8 @@ use rosalind2::string::kmer;
 use rosalind2::string::kmp;
 use rosalind2::string::lcsq;
 use rosalind2::string::lexv;
+use rosalind2::string::scsp;
 fn main() {
-    motz::solve();
+    lcsq::solve();
+    scsp::solve();
 }
