@@ -1,5 +1,4 @@
 use crate::string::lcsq::Searcher;
-use std::cmp;
 use std::collections::HashMap;
 use std::fs;
 

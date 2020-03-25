@@ -4,6 +4,7 @@ use rosalind2::combinatorics::mmch;
 use rosalind2::combinatorics::motz;
 use rosalind2::graph::inod;
 use rosalind2::graph::trie;
+use rosalind2::string::itwv;
 use rosalind2::string::kmer;
 use rosalind2::string::kmp;
 use rosalind2::string::lcsq;
@@ -14,5 +15,5 @@ fn main() {
     // lcsq::solve();
     // scsp::solve();
     // inod::solve();
-    trie::solve();
+    itwv::solve();
 }

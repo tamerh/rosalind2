@@ -2,7 +2,7 @@ use indextree::*;
 
 #[derive(Debug)]
 pub struct Node {
-  pub val: char,
+  val: char,
 }
 
 fn trie(inputs: Vec<&str>) {
@@ -45,7 +45,7 @@ fn trie(inputs: Vec<&str>) {
 
 pub fn solve() -> std::io::Result<()> {
   let input = std::fs::read_to_string("inputs/rosalind_trie.txt").unwrap();
-  let inputs = input.lines().map(|c| c).collect::<Vec<&str>>();
+  let inputs = input.lines().collect::<Vec<&str>>();
   trie(inputs);
   Ok(())
 }
