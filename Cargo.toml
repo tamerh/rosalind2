@@ -6,3 +6,4 @@ edition = "2018"
 
 [dependencies]
 bio = "*"
+indextree = "4.0.0"

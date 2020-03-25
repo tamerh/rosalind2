@@ -1,5 +1,4 @@
 pub mod cat;
-pub mod inod;
 pub mod mmch;
 pub mod motz;
 
