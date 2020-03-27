@@ -3,6 +3,7 @@ use rosalind2::combinatorics::cat;
 use rosalind2::combinatorics::mmch;
 use rosalind2::combinatorics::motz;
 use rosalind2::graph::inod;
+use rosalind2::graph::lrep;
 use rosalind2::graph::trie;
 use rosalind2::string::itwv;
 use rosalind2::string::kmer;
@@ -15,5 +16,6 @@ fn main() {
     // lcsq::solve();
     // scsp::solve();
     // inod::solve();
-    itwv::solve();
+    // itwv::solve();
+    lrep::solve();
 }
