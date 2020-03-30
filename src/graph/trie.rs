@@ -5,27 +5,31 @@ pub struct Node {
   val: char,
 }
 
-fn trie(inputs: Vec<&str>) {
-  let arena = &mut Arena::new();
+pub fn build_trie(inputs: Vec<&str>) -> (Arena<Node>, NodeId) {
+  let mut arena = Arena::new();
 
   let root_node = arena.new_node(Node { val: 'r' });
   let mut last_node = root_node;
   for input in inputs {
     for ch in input.chars() {
       let mut child = last_node
-        .children(arena)
+        .children(&arena)
         .filter(|n| arena.get(*n).unwrap().get().val == ch)
         .collect::<Vec<_>>();
       if child.len() == 1 {
         last_node = child.pop().unwrap();
       } else {
         let child_node = arena.new_node(Node { val: ch });
-        last_node.append(child_node, arena);
+        last_node.append(child_node, &mut arena);
         last_node = child_node;
       }
     }
     last_node = root_node;
   }
+  (arena, root_node)
+}
+fn trie(inputs: Vec<&str>) {
+  let (arena, root_node) = build_trie(inputs);
 
   // traverse and print
   let t = root_node.traverse(&arena).collect::<Vec<_>>();

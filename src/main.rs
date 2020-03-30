@@ -11,13 +11,10 @@ use rosalind2::string::kmer;
 use rosalind2::string::kmp;
 use rosalind2::string::lcsq;
 use rosalind2::string::lexv;
+use rosalind2::string::ling;
 use rosalind2::string::scsp;
 
 fn main() {
-    // lcsq::solve();
-    // scsp::solve();
-    // inod::solve();
-    // itwv::solve();
-    // lrep::solve();
-    suff::solve();
+    ling::solve();
+    //trie::solve();
 }
