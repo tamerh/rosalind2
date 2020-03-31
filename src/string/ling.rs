@@ -27,7 +27,6 @@ fn ling(s: &str) {
     suffixes.push(&s[i..]);
   }
   let (arena, s_root) = trie::build_trie(suffixes);
-  println!("{}", s_root);
   let mut total_subs = s_root.children(&arena).count() - 1;
   for i in 2..s.len() {
     let mut total = 0;
@@ -36,7 +35,23 @@ fn ling(s: &str) {
     }
     total_subs += total;
   }
-  println!("lc(s) {}", total_subs);
+
+  // 2- find m(a,k,n)
+  // TODO appereantly for max possible substrings of length k is min(4^k, n-k-1)
+  let mut total_max = 0.;
+  let alphabet = ["A", "C", "G", "T"];
+
+  for i in 1..s.len() {
+    if alphabet.len().pow(i as u32) < s.len() {
+      total_max += alphabet.len().pow(i as u32) as f64;
+    } else {
+      for j in 0..i {
+        total_max += ((s.len() - j - 1) as f64 / i as f64).floor()
+      }
+    }
+  }
+
+  println!("{}", total_subs as f64 / total_max);
 }
 pub fn solve() -> std::io::Result<()> {
   let mut s = std::fs::read_to_string("inputs/rosalind_ling.txt")?;
