@@ -12,9 +12,10 @@ use rosalind2::string::kmp;
 use rosalind2::string::lcsq;
 use rosalind2::string::lexv;
 use rosalind2::string::ling;
+use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    ling::solve();
-    //trie::solve();
+    mrep::solve();
+    // suff::solve();
 }
