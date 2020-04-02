@@ -5,7 +5,7 @@ use indextree::*;
 pub struct Node<'s> {
   pub start: &'s str,
   pub label: &'s str,
-  pub loc: usize,
+  pub loc: usize, // only useful for the leaf nodes
 }
 
 // based on slow suffix tree
