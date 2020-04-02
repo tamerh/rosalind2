@@ -2,7 +2,8 @@ use crate::graph::suff;
 use std::collections::HashMap;
 use std::collections::HashSet;
 
-// this func could be way faster
+// this problem probably has a faster solution
+// also in the problem Motzkin numbers problem are given as a condition probably has different optimum solution with it
 fn mrep(s: &str) {
   let (arena, root) = suff::build_suffix_tree(s);
 
@@ -31,7 +32,7 @@ fn mrep(s: &str) {
     }
   }
 
-  // 2- check maximal repeat conditions 
+  // 2- check maximal repeat conditions
   let mut result = HashSet::new();
   for k in repeats.keys() {
     let mut found = true;
