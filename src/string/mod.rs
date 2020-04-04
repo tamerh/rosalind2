@@ -1,3 +1,4 @@
+pub mod edit;
 pub mod itwv;
 pub mod kmer;
 pub mod kmp;
