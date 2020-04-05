@@ -1,10 +1,42 @@
-use crate::dynamicp::lcsq;
 use bio::io::fasta;
 use std::cmp;
 
 pub fn edit(seq1: &str, seq2: &str) -> usize {
-  let l = lcsq::lcsq(seq1, seq2).len();
-  cmp::max(seq1.len(), seq2.len()) - l
+  let mut dyna_table = vec![vec![0; seq2.len() + 1]; seq1.len() + 1];
+
+  // inital DP table values
+  for i in 0..seq1.len() + 1 {
+    dyna_table[i][0] = i;
+  }
+  for j in 0..seq2.len() + 1 {
+    dyna_table[0][j] = j;
+  }
+
+  // 1- create DP table
+  for i in 1..seq1.len() + 1 {
+    for j in 1..seq2.len() + 1 {
+      if &seq2[j - 1..j] == &seq1[i - 1..i] {
+        dyna_table[i][j] = dyna_table[i - 1][j - 1];
+      } else {
+        let replace = dyna_table[i - 1][j - 1] + 1;
+        let delete = dyna_table[i - 1][j] + 1;
+        let insert = dyna_table[i][j - 1] + 1;
+        dyna_table[i][j] = cmp::min(cmp::min(replace, insert), delete);
+      }
+    }
+  }
+
+  // print table
+  // for i in 0..seq1.len() + 1 {
+  //   for j in 0..seq2.len() + 1 {
+  //     print!("{}", dyna_table[i][j]);
+  //     print!(" ");
+  //   }
+  //   println!("");
+  // }
+
+  println!("Edit distance {}", dyna_table[seq1.len()][seq2.len()]);
+  dyna_table[seq1.len()][seq2.len()]
 }
 
 pub fn solve() {
