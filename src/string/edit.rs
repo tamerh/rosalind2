@@ -26,29 +26,6 @@ pub fn edit(seq1: &str, seq2: &str) -> (usize, Vec<char>) {
     }
   }
 
-  // print table
-  /**
-  print!("   ");
-  for j in 0..seq2.len() {
-    print!(" {}", &seq2[j..j + 1]);
-  }
-  println!("");
-  for i in 0..seq1.len() + 1 {
-    if i == 0 {
-      print!("  ");
-    } else {
-      print!("{} ", &seq1[i - 1..i]);
-    }
-    for j in 0..seq2.len() + 1 {
-      if dyna_table[i][j] > 9 {
-        print!("0 ");
-      } else {
-        print!("{} ", dyna_table[i][j]);
-      }
-    }
-    println!("");
-  }
-  */
   // backtrace and set edit operations
   let mut edit_ops = Vec::new();
 

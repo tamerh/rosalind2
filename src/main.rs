@@ -1,5 +1,6 @@
 use bio::io::fasta;
 use rosalind2::alignment::edta;
+use rosalind2::alignment::glob;
 use rosalind2::combinatorics::cat;
 use rosalind2::combinatorics::mmch;
 use rosalind2::combinatorics::motz;
@@ -19,5 +20,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    edta::solve();
+    glob::solve();
 }
