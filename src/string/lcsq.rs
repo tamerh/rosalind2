@@ -21,7 +21,6 @@ impl<'s> Searcher<'s> {
       self.cache.entry((i, j)).or_insert(out.clone());
       return out;
     } else {
-      // TODO avoid too many clone??
       let a = match self.cache.get(&(i + 1, j)) {
         Some(a) => a.clone(),
         None => self.lcsq(i + 1, j),

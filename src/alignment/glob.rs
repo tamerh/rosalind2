@@ -26,18 +26,10 @@ fn glob(seq1: &str, seq2: &str, gap_penalty: i32) -> i32 {
         );
       let delete = dyna_table[i - 1][j] + (gap_penalty * -1);
       let insert = dyna_table[i][j - 1] + (gap_penalty * -1);
-      println!(
-        "r cost {} d cost {} i cost {} and min {}",
-        replace,
-        delete,
-        insert,
-        cmp::max(cmp::max(replace, insert), delete)
-      );
-
       dyna_table[i][j] = cmp::max(cmp::max(replace, insert), delete);
     }
   }
-  //util::print_table(seq1, seq2, &dyna_table);
+  util::print_table(seq1, seq2, &dyna_table);
   dyna_table[seq1.len()][seq2.len()]
 }
 

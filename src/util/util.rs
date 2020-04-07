@@ -13,7 +13,7 @@ pub fn print_table(seq1: &str, seq2: &str, dyna_table: &Vec<Vec<i32>>) {
   for i in 0..seq1.len() + 1 {
     let mut cells = Vec::<Cell>::new();
     if i == 0 {
-      cells.push(Cell::new(""));
+      cells.push(Cell::new("-"));
     } else {
       cells.push(Cell::new(&seq1[i - 1..i]));
     }
