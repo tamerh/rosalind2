@@ -1,4 +1,6 @@
 use prettytable::{Cell, Row, Table};
+use std::fs::File;
+use std::io::{BufWriter, Write};
 
 pub fn print_table(seq1: &str, seq2: &str, dyna_table: &Vec<Vec<i32>>) {
   // Create the table
@@ -25,7 +27,7 @@ pub fn print_table(seq1: &str, seq2: &str, dyna_table: &Vec<Vec<i32>>) {
   table.printstd();
 }
 
-pub fn print_table_tuple(seq1: &str, seq2: &str, dyna_table: &Vec<Vec<(i32, &str)>>) {
+pub fn print_table_tuple(seq1: &str, seq2: &str, dyna_table: &Vec<Vec<(i32, &str)>>, file: bool) {
   // Create the table
   let mut table = Table::new();
   let mut header_cells = Vec::<Cell>::new();
@@ -50,5 +52,11 @@ pub fn print_table_tuple(seq1: &str, seq2: &str, dyna_table: &Vec<Vec<(i32, &str
     }
     table.add_row(Row::new(cells));
   }
-  table.printstd();
+  if file {
+    let mut file = std::fs::File::create("table.txt").expect("create failed");
+    let mut f = BufWriter::new(file);
+    table.print(&mut f);
+  } else {
+    table.printstd();
+  }
 }

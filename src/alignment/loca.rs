@@ -48,7 +48,7 @@ fn loca(seq1: &str, seq2: &str, gap_penalty: i32) -> (i32, String, String) {
       dyna_table[i][j] = (max_val, prev_direction);
     }
   }
-  util::print_table_tuple(seq1, seq2, &dyna_table);
+  util::print_table_tuple(seq1, seq2, &dyna_table, false);
 
   // backtrace
   let mut i = glob_max_i;
@@ -89,14 +89,14 @@ pub fn solve() {
   let rec2 = records.next().unwrap().unwrap();
   let seq1 = rec1.seq().iter().map(|c| *c as char).collect::<String>();
   let seq2 = rec2.seq().iter().map(|c| *c as char).collect::<String>();
-  let (score, seq1new, seq2new) = loca(&seq1, &seq2, 5);
+  let (score, seq1new, seq2new) = loca(&seq2, &seq1, 5);
   println!("{}", score);
   println!("{}", seq1new);
   println!("{}", seq2new);
 }
 
 #[test]
-fn test_edta() {
+fn test_loca() {
   let (score, _, _) = loca("MEANLYPRTEINSTRING", "PLEASANTLYEINSTEIN", 5);
   assert_eq!(score, 23);
 }
