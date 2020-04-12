@@ -1,15 +1,16 @@
+use crate::util::util;
 use bio::io::fasta;
 use std::cmp;
 
-pub fn edit(seq1: &str, seq2: &str) -> (usize, Vec<char>) {
+pub fn edit(seq1: &str, seq2: &str) -> (i32, Vec<char>) {
   let mut dyna_table = vec![vec![0; seq2.len() + 1]; seq1.len() + 1];
 
   // DP base condtions
   for i in 0..seq1.len() + 1 {
-    dyna_table[i][0] = i;
+    dyna_table[i][0] = i as i32;
   }
   for j in 0..seq2.len() + 1 {
-    dyna_table[0][j] = j;
+    dyna_table[0][j] = j as i32;
   }
 
   // fill DP table
@@ -26,6 +27,7 @@ pub fn edit(seq1: &str, seq2: &str) -> (usize, Vec<char>) {
     }
   }
 
+  util::print_table(seq1, seq2, &dyna_table);
   // backtrace and set edit operations
   let mut edit_ops = Vec::new();
 

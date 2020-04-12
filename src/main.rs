@@ -1,4 +1,5 @@
 use bio::io::fasta;
+use rosalind2::alignment::ctea;
 use rosalind2::alignment::edta;
 use rosalind2::alignment::glob;
 use rosalind2::alignment::ksim;
@@ -25,5 +26,6 @@ use rosalind2::string::scsp;
 fn main() {
     //loca::solve();
     //glob::solve();
-    ksim::solve();
+    // ksim::solve();
+    ctea::solve();
 }

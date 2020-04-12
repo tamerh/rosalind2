@@ -1,7 +1,7 @@
 use crate::string::edit;
 use bio::io::fasta;
 
-pub fn edta(seq1: &str, seq2: &str) -> (usize, String, String) {
+pub fn edta(seq1: &str, seq2: &str) -> (i32, String, String) {
   let (distance, edit_op) = edit::edit(&seq1, &seq2);
   let mut seq1_new = "".to_owned();
   let mut seq2_new = "".to_owned();
