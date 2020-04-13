@@ -27,6 +27,7 @@ pub fn print_table(seq1: &str, seq2: &str, dyna_table: &Vec<Vec<i32>>) {
   table.printstd();
 }
 
+// TODO tuple needs to be struct or more generic way instead of tuple
 pub fn print_table_tuple(seq1: &str, seq2: &str, dyna_table: &Vec<Vec<(i32, &str)>>, file: bool) {
   // Create the table
   let mut table = Table::new();
