@@ -5,6 +5,7 @@ use rosalind2::alignment::gaff;
 use rosalind2::alignment::gcon;
 use rosalind2::alignment::glob;
 use rosalind2::alignment::ksim;
+use rosalind2::alignment::laff;
 use rosalind2::alignment::loca;
 use rosalind2::alignment::sims;
 use rosalind2::combinatorics::cat;
@@ -31,5 +32,5 @@ fn main() {
     // ksim::solve();
     // ctea::solve();
     //gcon::solve();
-    gaff::solve();
+    laff::solve();
 }
