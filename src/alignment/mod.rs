@@ -7,5 +7,6 @@ pub mod ksim;
 pub mod laff;
 pub mod loca;
 pub mod osym;
+pub mod pdst;
 pub mod sims;
 pub mod smgb;
