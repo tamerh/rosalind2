@@ -7,6 +7,7 @@ use rosalind2::alignment::glob;
 use rosalind2::alignment::ksim;
 use rosalind2::alignment::laff;
 use rosalind2::alignment::loca;
+use rosalind2::alignment::mgap;
 use rosalind2::alignment::osym;
 use rosalind2::alignment::pdst;
 use rosalind2::alignment::sims;
@@ -36,5 +37,5 @@ fn main() {
     // ctea::solve();
     //gcon::solve();
     // osym::solve();
-    pdst::solve();
+    mgap::solve();
 }
