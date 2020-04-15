@@ -21,7 +21,7 @@ pub fn ctea(seq1: &str, seq2: &str) -> i32 {
   // fill DP table
   for i in 1..seq1.len() + 1 {
     for j in 1..seq2.len() + 1 {
-      let mut replace = 0;
+      let replace;
       if &seq2[j - 1..j] == &seq1[i - 1..i] {
         replace = dyna_table[i - 1][j - 1];
       } else {
