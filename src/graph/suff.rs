@@ -99,7 +99,7 @@ pub fn suff(s: &str) {
 }
 
 pub fn solve() -> std::io::Result<()> {
-  let input = std::fs::read_to_string("inputs/rosalind_suff.txt").unwrap();
+  let input = std::fs::read_to_string("inputs/suff.txt").unwrap();
   let s = input.lines().nth(0).unwrap();
   suff(s);
   Ok(())

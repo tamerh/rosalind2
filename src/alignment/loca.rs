@@ -82,7 +82,7 @@ fn loca(seq1: &str, seq2: &str, gap_penalty: i32) -> (i32, String, String) {
 }
 
 pub fn solve() {
-  let mut records = fasta::Reader::from_file("inputs/rosalind_loca.fasta")
+  let mut records = fasta::Reader::from_file("inputs/loca.fasta")
     .unwrap()
     .records();
   let rec1 = records.next().unwrap().unwrap();

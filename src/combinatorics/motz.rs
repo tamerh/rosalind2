@@ -27,7 +27,7 @@ fn motzkin(seq: &[u8], saved: &mut HashMap<String, i32>) -> i32 {
 }
 
 pub fn solve() -> io::Result<()> {
-  let reader = fasta::Reader::from_file("inputs/rosalind_motz.fasta").unwrap();
+  let reader = fasta::Reader::from_file("inputs/motz.fasta").unwrap();
   let record = reader.records().next().unwrap().unwrap();
   let mut init = HashMap::new();
   println!("{}", motzkin(record.seq(), &mut init));

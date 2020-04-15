@@ -51,7 +51,7 @@ pub fn lcsq(seq1: &str, seq2: &str) -> String {
 }
 
 pub fn solve() {
-  let mut records = fasta::Reader::from_file("inputs/rosalind_lcsq.fasta")
+  let mut records = fasta::Reader::from_file("inputs/lcsq.fasta")
     .unwrap()
     .records();
   let rec1 = records.next().unwrap().unwrap();

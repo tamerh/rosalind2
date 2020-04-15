@@ -97,7 +97,7 @@ fn smgb(seq1: &str, seq2: &str) -> (i32, String, String) {
 }
 
 pub fn solve() {
-  let mut records = fasta::Reader::from_file("inputs/rosalind_smgb.fasta")
+  let mut records = fasta::Reader::from_file("inputs/smgb.fasta")
     .unwrap()
     .records();
   let rec1 = records.next().unwrap().unwrap();

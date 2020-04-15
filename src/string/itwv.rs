@@ -53,7 +53,7 @@ fn itwv(dna: &mut Vec<char>, motifs: &mut Vec<Vec<char>>) {
 }
 
 pub fn solve() -> std::io::Result<()> {
-  let input = std::fs::read_to_string("inputs/rosalind_itwv.txt").unwrap();
+  let input = std::fs::read_to_string("inputs/itwv.txt").unwrap();
   let mut dna = input.lines().nth(0).unwrap().chars().collect::<Vec<char>>();
   let mut motifs = input
     .lines()

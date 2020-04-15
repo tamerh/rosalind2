@@ -21,7 +21,7 @@ fn lexv(
 
 pub fn solve() -> std::io::Result<()> {
   let mut out = Vec::<String>::new();
-  let s = std::fs::read_to_string("inputs/rosalind_lexv.txt")?;
+  let s = std::fs::read_to_string("inputs/lexv.txt")?;
   let mut alphabet = Vec::<char>::new();
   alphabet.extend(
     s.lines()

@@ -48,7 +48,7 @@ fn trie(inputs: Vec<&str>) {
 }
 
 pub fn solve() -> std::io::Result<()> {
-  let input = std::fs::read_to_string("inputs/rosalind_trie.txt").unwrap();
+  let input = std::fs::read_to_string("inputs/trie.txt").unwrap();
   let inputs = input.lines().collect::<Vec<&str>>();
   trie(inputs);
   Ok(())

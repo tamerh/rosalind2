@@ -54,7 +54,7 @@ fn ling(s: &str) {
   println!("{}", total_subs as f64 / total_max);
 }
 pub fn solve() -> std::io::Result<()> {
-  let mut s = std::fs::read_to_string("inputs/rosalind_ling.txt")?;
+  let mut s = std::fs::read_to_string("inputs/ling.txt")?;
   s.push_str("$");
   ling(&s);
   Ok(())

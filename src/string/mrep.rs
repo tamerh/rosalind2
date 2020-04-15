@@ -73,7 +73,7 @@ fn mrep(s: &str) {
   }
 }
 pub fn solve() -> std::io::Result<()> {
-  let mut s = std::fs::read_to_string("inputs/rosalind_mrep.txt")?;
+  let mut s = std::fs::read_to_string("inputs/mrep.txt")?;
   s.push_str("$");
   mrep(&s);
   Ok(())

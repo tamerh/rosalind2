@@ -37,7 +37,7 @@ fn scsp(seq1: &[u8], seq2: &[u8]) -> Vec<u8> {
 }
 
 pub fn solve() -> std::io::Result<()> {
-  let seqs = fs::read_to_string("inputs/rosalind_scsp.txt")?;
+  let seqs = fs::read_to_string("inputs/scsp.txt")?;
   let rec1 = seqs
     .lines()
     .nth(0)

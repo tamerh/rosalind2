@@ -44,7 +44,7 @@ fn kmer_composition(kmers: Vec<String>, seq: &[u8]) -> Vec<usize> {
 }
 
 pub fn solve() -> io::Result<()> {
-  let reader = fasta::Reader::from_file("inputs/rosalind_kmer.fasta").unwrap();
+  let reader = fasta::Reader::from_file("inputs/kmer.fasta").unwrap();
   let record = reader.records().next().unwrap().unwrap();
 
   // find Lexicographical kmers

@@ -38,7 +38,7 @@ fn catalan_number(seq: &[u8]) -> i32 {
 }
 
 pub fn solve() -> io::Result<()> {
-  let reader = fasta::Reader::from_file("inputs/rosalind_cat.fasta").unwrap();
+  let reader = fasta::Reader::from_file("inputs/cat.fasta").unwrap();
   let record = reader.records().next().unwrap().unwrap();
   println!("{}", catalan_number(record.seq()));
 

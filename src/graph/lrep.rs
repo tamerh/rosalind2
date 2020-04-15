@@ -120,7 +120,7 @@ fn lrep(s: &str, k: usize, edges: Vec<&str>) {
   // }
 }
 pub fn solve() -> std::io::Result<()> {
-  let input = std::fs::read_to_string("inputs/rosalind_lrep.txt").unwrap();
+  let input = std::fs::read_to_string("inputs/lrep.txt").unwrap();
   let mut lines = input.lines();
   let s = lines.next().unwrap();
   let k = lines.next().unwrap().parse::<usize>().unwrap();

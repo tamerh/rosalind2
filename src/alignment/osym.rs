@@ -54,7 +54,7 @@ fn osym(seq1: &str, seq2: &str) -> (i32, i32) {
 }
 
 pub fn solve() {
-  let mut records = fasta::Reader::from_file("inputs/rosalind_osym.fasta")
+  let mut records = fasta::Reader::from_file("inputs/osym.fasta")
     .unwrap()
     .records();
   let rec1 = records.next().unwrap().unwrap();

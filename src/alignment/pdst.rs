@@ -29,7 +29,7 @@ fn pdst(seqs: Vec<String>) {
 }
 
 pub fn solve() {
-  let mut records = fasta::Reader::from_file("inputs/rosalind_pdst.fasta")
+  let mut records = fasta::Reader::from_file("inputs/pdst.fasta")
     .unwrap()
     .records();
 

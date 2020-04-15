@@ -1,5 +1,5 @@
 pub fn solve() -> std::io::Result<()> {
-  let input = std::fs::read_to_string("inputs/rosalind_inod.txt").unwrap();
+  let input = std::fs::read_to_string("inputs/inod.txt").unwrap();
   let mut lines = input.lines();
   let n = lines.next().unwrap().trim().parse::<usize>().unwrap();
   // https://en.wikipedia.org/wiki/Unrooted_binary_tree

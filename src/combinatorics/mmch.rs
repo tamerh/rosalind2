@@ -12,7 +12,7 @@ fn mmch(seq: &[u8]) -> f64 {
 }
 
 pub fn solve() -> io::Result<()> {
-  let reader = fasta::Reader::from_file("inputs/rosalind_mmch.fasta").unwrap();
+  let reader = fasta::Reader::from_file("inputs/mmch.fasta").unwrap();
   let record = reader.records().next().unwrap().unwrap();
   println!("{}", mmch(record.seq()));
 

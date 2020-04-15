@@ -36,7 +36,7 @@ fn lps2(pattern: &[u8]) -> Vec<usize> {
 }
 
 pub fn solve() {
-  let reader = fasta::Reader::from_file("inputs/rosalind_kmp.fasta").unwrap();
+  let reader = fasta::Reader::from_file("inputs/kmp.fasta").unwrap();
   let record = reader.records().next().unwrap().unwrap();
   println!("{:?}", lps(record.seq()));
 }

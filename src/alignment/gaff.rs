@@ -101,7 +101,7 @@ fn gaff(
 }
 
 pub fn solve() {
-  let mut records = fasta::Reader::from_file("inputs/rosalind_gaff.fasta")
+  let mut records = fasta::Reader::from_file("inputs/gaff.fasta")
     .unwrap()
     .records();
   let rec1 = records.next().unwrap().unwrap();

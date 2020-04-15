@@ -64,7 +64,7 @@ pub fn edit(seq1: &str, seq2: &str) -> (i32, Vec<char>) {
 }
 
 pub fn solve() {
-  let mut records = fasta::Reader::from_file("inputs/rosalind_edit.fasta")
+  let mut records = fasta::Reader::from_file("inputs/edit.fasta")
     .unwrap()
     .records();
   let rec1 = records.next().unwrap().unwrap();

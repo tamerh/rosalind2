@@ -94,7 +94,7 @@ fn ksim(seq1: &str, seq2: &str, k_score: i32) {
 }
 
 pub fn solve() {
-  let input = std::fs::read_to_string("inputs/rosalind_ksim.txt").unwrap();
+  let input = std::fs::read_to_string("inputs/ksim.txt").unwrap();
   let mut lines = input.lines();
   let k = lines.next().unwrap().parse::<usize>().unwrap();
   let motif = lines.next().unwrap();

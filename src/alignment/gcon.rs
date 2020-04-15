@@ -51,7 +51,7 @@ fn gcon(seq1: &str, seq2: &str, gap_penalty: i32) -> i32 {
 }
 
 pub fn solve() {
-  let mut records = fasta::Reader::from_file("inputs/rosalind_glob.fasta")
+  let mut records = fasta::Reader::from_file("inputs/glob.fasta")
     .unwrap()
     .records();
   let rec1 = records.next().unwrap().unwrap();
