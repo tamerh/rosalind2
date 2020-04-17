@@ -7,6 +7,7 @@ pub mod ksim;
 pub mod laff;
 pub mod loca;
 pub mod mgap;
+pub mod mult;
 pub mod oap;
 pub mod osym;
 pub mod pdst;

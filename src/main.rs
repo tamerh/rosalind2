@@ -9,6 +9,7 @@ use rosalind2::alignment::laff;
 use rosalind2::alignment::loca;
 use rosalind2::alignment::mgap;
 use rosalind2::alignment::oap;
+use rosalind2::alignment::mult;
 use rosalind2::alignment::osym;
 use rosalind2::alignment::pdst;
 use rosalind2::alignment::sims;
@@ -32,5 +33,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    oap::solve();
+    mult::solve();
 }
