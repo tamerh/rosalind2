@@ -14,6 +14,7 @@ use rosalind2::alignment::osym;
 use rosalind2::alignment::pdst;
 use rosalind2::alignment::sims;
 use rosalind2::alignment::smgb;
+use rosalind2::combinatorics::aspc;
 use rosalind2::combinatorics::cat;
 use rosalind2::combinatorics::mmch;
 use rosalind2::combinatorics::motz;
@@ -34,5 +35,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    sset::solve();
+    aspc::solve();
 }
