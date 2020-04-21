@@ -1,13 +1,19 @@
+use crate::sort::hea;
 use std::io;
 
-pub fn heapify(n: usize, array: &mut Vec<usize>) -> Vec<usize> {
+fn hs(n: usize, array: &mut Vec<usize>) -> Vec<usize> {
   // heapify the array
-  for i in (0..n).rev() {
-    let mut parent = i;
+
+  *array = hea::heapify(n, array);
+
+  for i in 0..n {
+    array.swap(0, n - 1 - i);
+
+    let mut parent = 0;
     loop {
       let left = 2 * parent + 1;
       let right = 2 * parent + 2;
-      if left < n && right < n {
+      if left < n - i - 1 && right < n - i - 1 {
         if array[left] > array[right] && array[parent] < array[left] {
           //swap with left and set new parent left
           array.swap(parent, left);
@@ -20,13 +26,13 @@ pub fn heapify(n: usize, array: &mut Vec<usize>) -> Vec<usize> {
           // no swap occured break no need to go further
           break;
         }
-      } else if left < n {
+      } else if left < n - i - 1 {
         if array[parent] < array[left] {
           //swap with left and break
           array.swap(parent, left);
         }
         break;
-      } else if right < n {
+      } else if right < n - i - 1 {
         if array[parent] < array[left] {
           //swap with right and break
           array.swap(parent, right);
@@ -42,7 +48,7 @@ pub fn heapify(n: usize, array: &mut Vec<usize>) -> Vec<usize> {
 }
 
 pub fn solve() -> io::Result<()> {
-  let input = std::fs::read_to_string("inputs/hea.txt").unwrap();
+  let input = std::fs::read_to_string("inputs/hs.txt").unwrap();
   let s = input.lines().nth(0).unwrap().parse::<usize>().unwrap();
   let mut array = input
     .lines()
@@ -52,12 +58,12 @@ pub fn solve() -> io::Result<()> {
     .split_whitespace()
     .map(|s| s.parse::<usize>().unwrap())
     .collect::<Vec<usize>>();
-  println!("{:?}", heapify(s, &mut array));
+  println!("{:?}", hs(s, &mut array));
   Ok(())
 }
 
 #[test]
-fn test_hea() {
+fn test_hs() {
   let mut arr = vec![10, 20, 15, 30, 40];
-  assert_eq!(vec![40, 30, 15, 10, 20], heapify(5, &mut arr));
+  assert_eq!(vec![10, 15, 20, 30, 40], hs(5, &mut arr));
 }
