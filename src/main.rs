@@ -24,6 +24,7 @@ use rosalind2::graph::inod;
 use rosalind2::graph::lrep;
 use rosalind2::graph::suff;
 use rosalind2::graph::trie;
+use rosalind2::sort::hea;
 use rosalind2::string::edit;
 use rosalind2::string::itwv;
 use rosalind2::string::kmer;
@@ -35,5 +36,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    aspc::solve();
+    hea::solve();
 }
