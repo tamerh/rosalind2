@@ -26,6 +26,7 @@ use rosalind2::graph::suff;
 use rosalind2::graph::trie;
 use rosalind2::sort::hea;
 use rosalind2::sort::hs;
+use rosalind2::sort::ins;
 use rosalind2::sort::mer;
 use rosalind2::string::edit;
 use rosalind2::string::itwv;
@@ -38,5 +39,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    mer::solve();
+    ins::solve();
 }
