@@ -1,6 +1,6 @@
 use std::io;
 
-fn mer(m: usize, n: usize, array1: Vec<i32>, array2: Vec<i32>) -> Vec<i32> {
+pub fn mer(m: usize, n: usize, array1: Vec<i32>, array2: Vec<i32>) -> Vec<i32> {
   let mut res = vec![];
 
   let mut i = 0;

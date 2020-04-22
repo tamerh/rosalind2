@@ -19,6 +19,8 @@ use rosalind2::combinatorics::cat;
 use rosalind2::combinatorics::mmch;
 use rosalind2::combinatorics::motz;
 use rosalind2::combinatorics::sset;
+use rosalind2::daq::bins;
+use rosalind2::daq::ms;
 use rosalind2::dynamicp::lcsq;
 use rosalind2::graph::inod;
 use rosalind2::graph::lrep;
@@ -28,7 +30,6 @@ use rosalind2::sort::hea;
 use rosalind2::sort::hs;
 use rosalind2::sort::ins;
 use rosalind2::sort::mer;
-use rosalind2::daq::bins;
 use rosalind2::string::edit;
 use rosalind2::string::itwv;
 use rosalind2::string::kmer;
@@ -40,5 +41,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    bins::solve();
+    ms::solve();
 }

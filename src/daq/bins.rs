@@ -27,7 +27,6 @@ fn binary_search(n: usize, array: Vec<usize>, array2: Vec<usize>) -> Vec<i32> {
 pub fn solve() -> io::Result<()> {
   let input = std::fs::read_to_string("inputs/bins.txt").unwrap();
   let n = input.lines().nth(0).unwrap().parse::<usize>().unwrap();
-  let m = input.lines().nth(1).unwrap().parse::<usize>().unwrap();
   let array = input
     .lines()
     .nth(2)
@@ -49,7 +48,8 @@ pub fn solve() -> io::Result<()> {
 }
 
 #[test]
-fn test_bins() {
-  let mut arr = vec![40, 20, 15, 30, 10];
-  assert_eq!(vec![10, 15, 20, 30, 40], bins(5, &mut arr));
+fn test_binary_search() {
+  let arr = vec![10, 20, 23, 30, 40];
+  let arr2 = vec![40, 20, 33];
+  assert_eq!(vec![5, 2, -1], binary_search(5, arr, arr2));
 }
