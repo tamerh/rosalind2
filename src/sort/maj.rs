@@ -28,25 +28,40 @@ pub fn majority(arrs: Vec<Vec<i32>>) -> Vec<i32> {
 }
 
 // divide and conquer
-// TODO works only for array size 2^n
-pub fn majority_daq(arr: &[i32]) -> (bool, i32) {
-  // bool is just mark if there is no majority in which case returns (false,-1)
+// based on https://stackoverflow.com/a/28960878/2132939
+// NOTE not sure about the runtime complexity of the function
+pub fn majority_daq(arr: &[i32]) -> Option<(i32, usize)> {
   if arr.len() == 1 {
-    return (true, arr[0]);
+    return Some((arr[0], 1));
+  } else if arr.len() == 0 {
+    return None;
   }
-  let x = majority_daq(&arr[..arr.len() / 2]);
-  let y = majority_daq(&arr[arr.len() / 2..]);
 
-  if x.0 && y.0 && x.1 != y.1 {
-    return (false, -1);
-  } else if x.0 && y.0 && x.1 == y.1 {
-    return (true, x.1);
-  } else if x.0 {
-    return (true, x.1);
-  } else if y.0 {
-    return (true, y.1);
+  let r = arr.len() / 2;
+  let left = majority_daq(&arr[..r]);
+  let right = majority_daq(&arr[r..]);
+
+  match left {
+    Some(x) => {
+      let right_count = &arr[r..].iter().filter(|c| **c == x.0).count();
+      if x.1 + right_count > r {
+        return Some((x.0, x.1 + right_count));
+      }
+    }
+    None => (),
   }
-  (false, -1)
+
+  match right {
+    Some(x) => {
+      let left_count = &arr[..r].iter().filter(|c| **c == x.0).count();
+      if x.1 + left_count > r {
+        return Some((x.0, x.1 + left_count));
+      }
+    }
+    None => (),
+  }
+
+  None
 }
 
 pub fn solve() -> io::Result<()> {
@@ -85,6 +100,6 @@ fn test_majority() {
 fn test_majority_daq() {
   let arr1 = vec![5, 5, 5, 30, 40];
   let arr2 = vec![10, 15, 20, 30, 40, 50];
-  assert_eq!((true, 5), majority_daq(&arr1));
-  assert_eq!((false, -1), majority_daq(&arr2));
+  assert_eq!(Some((5, 3)), majority_daq(&arr1));
+  assert_eq!(None, majority_daq(&arr2));
 }
