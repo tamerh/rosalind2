@@ -58,6 +58,7 @@ pub fn solve() -> io::Result<()> {
 
 #[test]
 fn test_mer() {
+  println!("efasdf");
   let arr = vec![10, 15, 20, 30, 40];
   let arr2 = vec![-1, 22, 55];
   assert_eq!(vec![-1, 10, 15, 20, 22, 30, 40, 55], mer(5, 3, arr, arr2));

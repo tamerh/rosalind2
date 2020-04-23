@@ -31,6 +31,7 @@ use rosalind2::sort::hs;
 use rosalind2::sort::ins;
 use rosalind2::sort::maj;
 use rosalind2::sort::mer;
+use rosalind2::sort::ps;
 use rosalind2::sort::twosum;
 use rosalind2::string::edit;
 use rosalind2::string::itwv;
@@ -43,5 +44,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    twosum::solve();
+    ps::solve();
 }

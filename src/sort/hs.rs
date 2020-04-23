@@ -1,7 +1,7 @@
 use crate::sort::hea;
 use std::io;
 
-fn hs(n: usize, array: &mut Vec<usize>) -> Vec<usize> {
+pub fn hs(n: usize, array: &mut Vec<usize>) -> Vec<usize> {
   // heapify the array
 
   *array = hea::heapify(n, array);
