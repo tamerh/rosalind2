@@ -2,7 +2,7 @@ use crate::sort::mer;
 use std::collections::VecDeque;
 use std::io;
 
-fn merge_sort_2_way(array: Vec<i32>) -> Vec<i32> {
+pub fn merge_sort_2_way(array: Vec<i32>) -> Vec<i32> {
   // TODO better do without queue and using 2 array
   let mut queue = VecDeque::new();
 
@@ -21,7 +21,7 @@ fn merge_sort_2_way(array: Vec<i32>) -> Vec<i32> {
   queue.pop_front().unwrap()
 }
 
-fn merge_sort_recursive(array: Vec<i32>) -> Vec<i32> {
+pub fn merge_sort_recursive(array: Vec<i32>) -> Vec<i32> {
   // TODO better to do without to_vec and using 2 array
   if array.len() == 1 {
     return array;
