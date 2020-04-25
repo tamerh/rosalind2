@@ -1,6 +1,6 @@
 use std::io;
 
-fn par(n: usize, arr: &mut Vec<i32>) -> Vec<i32> {
+pub fn par(n: usize, arr: &mut Vec<i32>) -> usize {
   arr.push(100_000 + 1);
 
   let pivot = arr[0];
@@ -27,8 +27,7 @@ fn par(n: usize, arr: &mut Vec<i32>) -> Vec<i32> {
   }
   arr.swap(0, high);
   arr.pop(); // remove the max element
-
-  arr.to_vec()
+  high
 }
 
 pub fn solve() -> io::Result<()> {
@@ -49,8 +48,12 @@ pub fn solve() -> io::Result<()> {
 #[test]
 fn test_par() {
   let mut arr = vec![22, 40, 20, 15, 10];
-  assert_eq!(vec![15, 10, 20, 22, 40], par(5, &mut arr));
+  let mut j = par(5, &mut arr);
+  assert_eq!(vec![15, 10, 20, 22, 40], arr);
+  assert_eq!(3, j);
 
-  let mut arr = vec![22, 40, 20, 15, 10, 22];
-  assert_eq!(vec![10, 22, 20, 15, 22, 40], par(6, &mut arr));
+  arr = vec![22, 40, 20, 15, 10, 22];
+  j = par(6, &mut arr);
+  assert_eq!(vec![10, 22, 20, 15, 22, 40], arr);
+  assert_eq!(4, j);
 }

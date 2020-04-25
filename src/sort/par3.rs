@@ -1,5 +1,6 @@
 use std::io;
 
+// TODO dup checks should be same as in sort::med
 fn par(n: usize, arr: &mut Vec<i32>) -> Vec<i32> {
   arr.push(100_000 + 1);
 

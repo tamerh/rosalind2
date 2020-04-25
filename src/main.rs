@@ -30,6 +30,7 @@ use rosalind2::sort::hea;
 use rosalind2::sort::hs;
 use rosalind2::sort::ins;
 use rosalind2::sort::maj;
+use rosalind2::sort::med;
 use rosalind2::sort::mer;
 use rosalind2::sort::par;
 use rosalind2::sort::par3;
@@ -47,5 +48,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    par3::solve();
+    med::solve();
 }
