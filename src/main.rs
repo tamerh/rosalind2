@@ -35,6 +35,7 @@ use rosalind2::sort::mer;
 use rosalind2::sort::par;
 use rosalind2::sort::par3;
 use rosalind2::sort::ps;
+use rosalind2::sort::qs;
 use rosalind2::sort::threesum;
 use rosalind2::sort::twosum;
 use rosalind2::string::edit;
@@ -48,5 +49,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    med::solve();
+    qs::solve();
 }

@@ -9,3 +9,4 @@ pub mod par3;
 pub mod ps;
 pub mod threesum;
 pub mod twosum;
+pub mod qs;

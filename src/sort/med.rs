@@ -4,7 +4,7 @@ use std::io;
 // use rand::seq::SliceRandom;
 
 // returns s2 positions 
-fn par3(arr: &mut [i32]) ->(usize,usize,i32) {
+pub fn par3(arr: &mut [i32]) ->(usize,usize,i32) {
 
   // TODO pivot must be select randomly
   // let v=slice.iter().choose(&mut thread_rng()).unwrap();
@@ -73,7 +73,7 @@ fn med_rec(mut a: &mut [i32], k: usize) -> i32 {
   }else if k >= res.0 && k<=res.1{
     return res.2
   }else{
-    return med_rec(&mut a[res.1+1..], k-res.1-1);
+    return med_rec(&mut a[res.1+1..], k-(res.1+1));
   }
   
 }
