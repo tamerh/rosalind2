@@ -1,5 +1,5 @@
-use rosalind2::graph::cc;
+use rosalind2::graph::dij;
 
 fn main() {
-    cc::solve();
+    dij::solve();
 }
