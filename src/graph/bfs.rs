@@ -47,7 +47,7 @@ fn bfs(n: usize, edges: Vec<Vec<usize>>, start: usize) {
     }
   }
 
-  for (k, distance) in shortest_distance {
+  for (_, distance) in shortest_distance {
     print!("{} ", distance);
   }
   println!("");

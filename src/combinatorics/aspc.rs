@@ -10,13 +10,13 @@ fn aspc(n: usize, m: usize) -> usize {
   queue.push_back(root_node);
 
   while queue.len() > 0 {
+    // TODO if possible this should also like in cc.rs where iterator used automatically to consume childs
     let startnode: indextree::NodeId = queue.pop_back().unwrap();
     let index = **(&arena[startnode].get());
     let ancs = startnode.ancestors(&arena).skip(1).count();
     let start_index = index + 1 + startnode.children(&arena).count();
 
     let mut prev = startnode;
-
     if n >= start_index && n - start_index + ancs + 1 >= m {
       for i in start_index..=n {
         let newnode = arena.new_node(i);
