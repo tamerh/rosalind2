@@ -26,6 +26,7 @@ use rosalind2::graph::inod;
 use rosalind2::graph::lrep;
 use rosalind2::graph::suff;
 use rosalind2::graph::trie;
+use rosalind2::graph::deg;
 use rosalind2::sort::hea;
 use rosalind2::sort::hs;
 use rosalind2::sort::ins;
@@ -49,5 +50,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    qs::solve();
+    deg::solve();
 }
