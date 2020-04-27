@@ -1,3 +1,4 @@
+pub mod bfs;
 pub mod ddeg;
 pub mod deg;
 pub mod inod;

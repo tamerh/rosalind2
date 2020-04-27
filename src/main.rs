@@ -22,6 +22,7 @@ use rosalind2::combinatorics::sset;
 use rosalind2::daq::bins;
 use rosalind2::daq::ms;
 use rosalind2::dynamicp::lcsq;
+use rosalind2::graph::bfs;
 use rosalind2::graph::ddeg;
 use rosalind2::graph::deg;
 use rosalind2::graph::inod;
@@ -51,5 +52,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    ddeg::solve();
+    bfs::solve();
 }
