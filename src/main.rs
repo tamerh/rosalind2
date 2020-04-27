@@ -22,11 +22,12 @@ use rosalind2::combinatorics::sset;
 use rosalind2::daq::bins;
 use rosalind2::daq::ms;
 use rosalind2::dynamicp::lcsq;
+use rosalind2::graph::ddeg;
+use rosalind2::graph::deg;
 use rosalind2::graph::inod;
 use rosalind2::graph::lrep;
 use rosalind2::graph::suff;
 use rosalind2::graph::trie;
-use rosalind2::graph::deg;
 use rosalind2::sort::hea;
 use rosalind2::sort::hs;
 use rosalind2::sort::ins;
@@ -50,5 +51,5 @@ use rosalind2::string::mrep;
 use rosalind2::string::scsp;
 
 fn main() {
-    deg::solve();
+    ddeg::solve();
 }

@@ -1,27 +1,19 @@
 use petgraph::graph::Graph;
 use std::collections::BTreeMap;
 
-fn deg(edges: Vec<Vec<i32>>) {
+fn deg(n: usize, edges: Vec<Vec<usize>>) {
   let mut g = Graph::new_undirected();
   let mut nodes = BTreeMap::new();
 
+  for i in 1..=n {
+    let node = g.add_node(i);
+    nodes.insert(i, node);
+  }
   for e in &edges {
-    let x;
-    let y;
+    let x = *nodes.get(&e[0]).unwrap();
 
-    if !nodes.contains_key(&e[0]) {
-      x = g.add_node(e[0]);
-      nodes.insert(e[0], x);
-    } else {
-      x = *nodes.get(&e[0]).unwrap();
-    }
+    let y = *nodes.get(&e[1]).unwrap();
 
-    if !nodes.contains_key(&e[1]) {
-      y = g.add_node(e[1]);
-      nodes.insert(e[1], y);
-    } else {
-      y = *nodes.get(&e[1]).unwrap();
-    }
     g.add_edge(x, y, 1);
   }
 
@@ -50,10 +42,10 @@ pub fn solve() -> std::io::Result<()> {
       .unwrap()
       .trim()
       .split_whitespace()
-      .map(|s| s.parse::<i32>().unwrap())
-      .collect::<Vec<i32>>();
+      .map(|s| s.parse::<usize>().unwrap())
+      .collect::<Vec<usize>>();
     edges.push(pair);
   }
-  deg(edges);
+  deg(size[0], edges);
   Ok(())
 }
