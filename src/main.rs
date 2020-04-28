@@ -1,5 +1,5 @@
-use rosalind2::sort::inv;
+use rosalind2::graph::sq;
 
 fn main() {
-    inv::solve();
+    sq::solve();
 }
