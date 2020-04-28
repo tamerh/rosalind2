@@ -1,5 +1,5 @@
-use rosalind2::graph::dij;
+use rosalind2::sort::inv;
 
 fn main() {
-    dij::solve();
+    inv::solve();
 }
