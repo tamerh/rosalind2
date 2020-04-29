@@ -1,10 +1,8 @@
 use petgraph::graph::Graph;
 use std::collections::{BTreeMap, HashSet};
 
-// Bellman-Ford algorithm is a small changes to the Dijkstra dij.rs by checking the negihbours in all repeating steps
-// this allows the negative edges taken into account accurately.
-// Note: negative-weight cycles are checked in nwc.rs
-fn bf(n: usize, edges: Vec<Vec<i32>>, start: usize) {
+// slight change of bfs.rs
+fn negative_weight_cycle(n: usize, edges: Vec<Vec<i32>>, start: usize) -> bool {
   let mut g = Graph::new();
   let mut nodes = BTreeMap::new();
 
@@ -71,42 +69,67 @@ fn bf(n: usize, edges: Vec<Vec<i32>>, start: usize) {
       break;
     }
   }
-
-  for (_, dist) in &distance {
-    if *dist == std::i32::MAX {
-      print!("x ");
-    } else {
-      print!("{} ", dist);
+  for i in g.edge_indices() {
+    let (source, target) = g.edge_endpoints(i).unwrap();
+    let w = g.edge_weight(i).unwrap();
+    if distance.get(&g[source]).unwrap() + w < *distance.get(&g[target]).unwrap() {
+      return true;
     }
   }
+  false
+}
 
+fn nwc(all_edges: Vec<(usize, Vec<Vec<i32>>)>) {
+  for (n, edges) in all_edges {
+    let n = negative_weight_cycle(n, edges, 1);
+
+    if n {
+      print!("1 ");
+    } else {
+      print!("-1 ");
+    }
+  }
   println!("");
 }
 
 pub fn solve() -> std::io::Result<()> {
-  let input = std::fs::read_to_string("inputs/bf.txt").unwrap();
+  let f = std::fs::read_to_string("inputs/nwc.txt").unwrap();
+  let mut input = f.lines();
   // pass the first size line
   let size = input
-    .lines()
-    .nth(0)
+    .next()
     .unwrap()
     .split_whitespace()
     .map(|s| s.parse::<usize>().unwrap())
     .collect::<Vec<usize>>();
 
   let n = size[0];
-  let mut edges = Vec::new();
-  for i in 1..=size[1] {
-    let pair = input
-      .lines()
-      .nth(i)
+  let mut all_edges = Vec::new();
+  for i in 1..=size[0] {
+    let line = input.next().unwrap().trim();
+    if line.len() != 0 {
+      panic!("invalid input->{}", line);
+    }
+
+    let s = input
+      .next()
       .unwrap()
-      .trim()
       .split_whitespace()
-      .map(|s| s.parse::<i32>().unwrap())
-      .collect::<Vec<i32>>();
-    edges.push(pair);
+      .map(|s| s.parse::<usize>().unwrap())
+      .collect::<Vec<usize>>();
+    let mut edges = Vec::new();
+    for _ in 1..=s[1] {
+      let pair = input
+        .next()
+        .unwrap()
+        .trim()
+        .split_whitespace()
+        .map(|s| s.parse::<i32>().unwrap())
+        .collect::<Vec<i32>>();
+      edges.push(pair);
+    }
+    all_edges.push((s[0], edges));
   }
-  bf(size[0], edges, 1);
+  nwc(all_edges);
   Ok(())
 }

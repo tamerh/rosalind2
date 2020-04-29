@@ -1,6 +1,6 @@
 use rosalind2::graph::cte;
-use rosalind2::graph::ts;
+use rosalind2::graph::nwc;
 
 fn main() {
-    ts::solve();
+    nwc::solve();
 }
