@@ -2,6 +2,7 @@ use petgraph::graph::Graph;
 use std::collections::{BTreeMap, HashSet, VecDeque};
 
 // Dijkstra's Algorithm again this algorithm is in the library for the exercise basic implementation
+// Dijkstra may or may not work with negative edges
 fn dij(n: usize, edges: Vec<Vec<usize>>, start: usize) {
   let mut g = Graph::new();
   let mut nodes = BTreeMap::new();
@@ -44,17 +45,19 @@ fn dij(n: usize, edges: Vec<Vec<usize>>, start: usize) {
 
   loop {
     for neg in g.neighbors(selected_node_id.unwrap()) {
-      let dis = g[g.find_edge(selected_node_id.unwrap(), neg).unwrap()]
-        + shortest_distance.get(&selected_node).unwrap();
-      // check for Relaxation
-      if dis < *shortest_distance.get(&g[neg]).unwrap() {
-        // println!(
-        //   "updateing distance for {} prev {} new {}",
-        //   g[neg],
-        //   *shortest_distance.get(&g[neg]).unwrap(),
-        //   dis
-        // );
-        shortest_distance.insert(g[neg], dis);
+      if !discovered.contains(&g[neg]) {
+        let dis = g[g.find_edge(selected_node_id.unwrap(), neg).unwrap()]
+          + shortest_distance.get(&selected_node).unwrap();
+        // check for Relaxation
+        if dis < *shortest_distance.get(&g[neg]).unwrap() {
+          // println!(
+          //   "updateing distance for {} prev {} new {}",
+          //   g[neg],
+          //   *shortest_distance.get(&g[neg]).unwrap(),
+          //   dis
+          // );
+          shortest_distance.insert(g[neg], dis);
+        }
       }
     }
     discovered.insert(selected_node);
