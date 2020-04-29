@@ -1,4 +1,5 @@
 pub mod bfs;
+pub mod bip;
 pub mod cc;
 pub mod ddeg;
 pub mod deg;

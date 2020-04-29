@@ -1,5 +1,5 @@
-use rosalind2::graph::sq;
+use rosalind2::graph::bip;
 
 fn main() {
-    sq::solve();
+    bip::solve();
 }
