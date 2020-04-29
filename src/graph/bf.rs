@@ -4,7 +4,7 @@ use std::collections::{BTreeMap, HashSet};
 // Bellman-Ford algorithm is a small changes to the Dijkstra dij.rs by checking the negihbours in all repeating steps
 // this allows the negative edges taken into account accurately.
 // Note: negative-weight cycles are checked in nwc.rs
-fn bf(n: usize, edges: Vec<Vec<i32>>, start: usize) {
+pub fn bf(n: usize, edges: Vec<Vec<i32>>, start: usize) {
   let mut g = Graph::new();
   let mut nodes = BTreeMap::new();
 

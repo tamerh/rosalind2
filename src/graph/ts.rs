@@ -3,7 +3,7 @@ use std::collections::{BTreeMap, VecDeque};
 
 // Topological Sorting with Kahn's algorithm
 // TODO better to implement with Depth-search since this require graph update.
-fn ts(n: usize, edges: Vec<Vec<i32>>) {
+pub fn ts(n: usize, edges: &Vec<Vec<i32>>) -> (Vec<usize>, Graph<usize, i32>) {
   let mut g = Graph::new();
   let mut nodes = BTreeMap::new(); // TODO probably not needed when using Graph
 
@@ -11,12 +11,12 @@ fn ts(n: usize, edges: Vec<Vec<i32>>) {
     let node = g.add_node(i);
     nodes.insert(i, node);
   }
-  for e in &edges {
+  for e in edges {
     let x = *nodes.get(&(e[0] as usize)).unwrap();
 
     let y = *nodes.get(&(e[1] as usize)).unwrap();
 
-    g.add_edge(x, y, 1);
+    g.add_edge(x, y, e[2]);
   }
 
   let mut res = Vec::new();
@@ -44,8 +44,7 @@ fn ts(n: usize, edges: Vec<Vec<i32>>) {
       g.remove_edge(i);
     }
   }
-
-  println!("{:?}", res);
+  (res, g)
 }
 
 pub fn solve() -> std::io::Result<()> {
@@ -62,7 +61,7 @@ pub fn solve() -> std::io::Result<()> {
   let n = size[0];
   let mut edges = Vec::new();
   for i in 1..=size[1] {
-    let pair = input
+    let mut pair = input
       .lines()
       .nth(i)
       .unwrap()
@@ -70,8 +69,10 @@ pub fn solve() -> std::io::Result<()> {
       .split_whitespace()
       .map(|s| s.parse::<i32>().unwrap())
       .collect::<Vec<i32>>();
+    pair.push(1); // edge weight
     edges.push(pair);
   }
-  ts(size[0], edges);
+  let (res, _) = ts(size[0], &edges);
+  println!("{:?}", res);
   Ok(())
 }

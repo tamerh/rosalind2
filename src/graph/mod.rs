@@ -10,6 +10,7 @@ pub mod dij;
 pub mod inod;
 pub mod lrep;
 pub mod nwc;
+pub mod sdag;
 pub mod sq;
 pub mod suff;
 pub mod trie;

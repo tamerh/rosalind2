@@ -71,7 +71,7 @@ fn negative_weight_cycle(n: usize, edges: Vec<Vec<i32>>, start: usize) -> bool {
   }
   for i in g.edge_indices() {
     let (source, target) = g.edge_endpoints(i).unwrap();
-    let w = g.edge_weight(i).unwrap();
+    let w = g[i];
     if distance.get(&g[source]).unwrap() + w < *distance.get(&g[target]).unwrap() {
       return true;
     }
