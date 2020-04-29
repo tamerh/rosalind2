@@ -1,6 +1,7 @@
 pub mod bfs;
 pub mod bip;
 pub mod cc;
+pub mod dag;
 pub mod ddeg;
 pub mod deg;
 pub mod dij;

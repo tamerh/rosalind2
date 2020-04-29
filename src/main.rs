@@ -1,5 +1,5 @@
-use rosalind2::graph::bip;
+use rosalind2::graph::dag;
 
 fn main() {
-    bip::solve();
+    dag::solve();
 }
