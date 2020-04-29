@@ -1,6 +1,6 @@
 use rosalind2::graph::cte;
-use rosalind2::graph::dij;
+use rosalind2::graph::ts;
 
 fn main() {
-    cte::solve();
+    ts::solve();
 }
