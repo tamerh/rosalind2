@@ -45,7 +45,7 @@ fn cc(n: usize, edges: Vec<Vec<usize>>) -> usize {
           queue.push_back((node, neighbors, count - 1));
         }
         if !discovered.contains(&g[nextnode]) {
-          if g.neighbors(node).count() > 0 {
+          if g.neighbors(nextnode).count() > 0 {
             queue.push_back((
               nextnode,
               g.neighbors(nextnode),

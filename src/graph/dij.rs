@@ -1,4 +1,4 @@
-use crate::graph::gutil;
+use super::gutil;
 use petgraph::graph::Graph;
 use std::collections::{BTreeMap, HashSet};
 
