@@ -51,13 +51,16 @@ pub fn read_multi_graph(path: &str) -> std::io::Result<Vec<(usize, Vec<Vec<i32>>
       .collect::<Vec<usize>>();
     let mut edges = Vec::new();
     for _ in 1..=s[1] {
-      let pair = input
+      let mut pair = input
         .next()
         .unwrap()
         .trim()
         .split_whitespace()
         .map(|s| s.parse::<i32>().unwrap())
         .collect::<Vec<i32>>();
+      if pair.len() == 2 {
+        pair.push(1); // default weight
+      }
       edges.push(pair);
     }
     all_graphs.push((s[0], edges));

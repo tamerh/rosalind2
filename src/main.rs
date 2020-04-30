@@ -5,8 +5,9 @@ use rosalind2::graph::dij;
 use rosalind2::graph::nwc;
 use rosalind2::graph::sdag;
 use rosalind2::graph::ts;
+use rosalind2::graph::hdag;
 
 fn main() {
-    sdag::solve();
+    hdag::solve();
     //bf::solve();
 }

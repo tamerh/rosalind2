@@ -8,6 +8,7 @@ pub mod ddeg;
 pub mod deg;
 pub mod dij;
 pub mod gutil;
+pub mod hdag;
 pub mod inod;
 pub mod lrep;
 pub mod nwc;
