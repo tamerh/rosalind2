@@ -1,7 +1,8 @@
+use super::gutil;
 use petgraph::graph::Graph;
 use std::collections::{BTreeMap, VecDeque};
 
-fn bfs(n: usize, edges: Vec<Vec<usize>>, start: usize) {
+fn bfs(n: usize, edges: Vec<Vec<i32>>, start: usize) {
   let mut g = Graph::new();
   let mut nodes = BTreeMap::new();
 
@@ -10,9 +11,9 @@ fn bfs(n: usize, edges: Vec<Vec<usize>>, start: usize) {
     nodes.insert(i, node);
   }
   for e in &edges {
-    let x = *nodes.get(&e[0]).unwrap();
+    let x = *nodes.get(&(e[0] as usize)).unwrap();
 
-    let y = *nodes.get(&e[1]).unwrap();
+    let y = *nodes.get(&(e[1] as usize)).unwrap();
 
     g.add_edge(x, y, 1);
   }
@@ -54,28 +55,7 @@ fn bfs(n: usize, edges: Vec<Vec<usize>>, start: usize) {
 }
 
 pub fn solve() -> std::io::Result<()> {
-  let input = std::fs::read_to_string("inputs/bfs.txt").unwrap();
-
-  let size = input
-    .lines()
-    .nth(0)
-    .unwrap()
-    .split_whitespace()
-    .map(|s| s.parse::<usize>().unwrap())
-    .collect::<Vec<usize>>();
-
-  let mut edges = Vec::new();
-  for i in 1..=size[1] {
-    let pair = input
-      .lines()
-      .nth(i)
-      .unwrap()
-      .trim()
-      .split_whitespace()
-      .map(|s| s.parse::<usize>().unwrap())
-      .collect::<Vec<usize>>();
-    edges.push(pair);
-  }
-  bfs(size[0], edges, 1);
+  let (n, edges) = gutil::read_graph("inputs/bfs.txt").unwrap();
+  bfs(n, edges, 1);
   Ok(())
 }

@@ -1,9 +1,10 @@
+use crate::graph::gutil;
 use petgraph::graph::Graph;
 use std::collections::{BTreeMap, HashSet};
 
 // Dijkstra's Algorithm again this algorithm is in the library for the exercise basic implementation
 // Dijkstra may or may not work with negative edges
-pub fn dij(n: usize, edges: Vec<Vec<i32>>, start: usize) -> BTreeMap<usize, i32> {
+pub fn dij(n: usize, edges: Vec<Vec<i32>>, start: usize) -> Vec<i32> {
   let mut g = Graph::new();
   let mut nodes = BTreeMap::new();
 
@@ -28,7 +29,13 @@ pub fn dij(n: usize, edges: Vec<Vec<i32>>, start: usize) -> BTreeMap<usize, i32>
   distance.insert(start, 0);
 
   if g.neighbors(start_node).count() == 0 {
-    return distance;
+    let mut res = Vec::new();
+    for (_, dist) in &distance {
+      if *dist == std::i32::MAX {
+        res.push(-1);
+      }
+    }
+    return res;
   }
   let mut min = std::i32::MAX;
   let mut selected_node = 0;
@@ -83,42 +90,28 @@ pub fn dij(n: usize, edges: Vec<Vec<i32>>, start: usize) -> BTreeMap<usize, i32>
     }
   }
 
-  distance
+  let mut res = Vec::new();
+  for (_, dist) in &distance {
+    if *dist == std::i32::MAX {
+      res.push(-1);
+    } else {
+      res.push(*dist);
+    }
+  }
+  res
 }
 
 pub fn solve() -> std::io::Result<()> {
-  let input = std::fs::read_to_string("inputs/dij.txt").unwrap();
-  // pass the first size line
-  let size = input
-    .lines()
-    .nth(0)
-    .unwrap()
-    .split_whitespace()
-    .map(|s| s.parse::<usize>().unwrap())
-    .collect::<Vec<usize>>();
-
-  let n = size[0];
-  let mut edges = Vec::new();
-  for i in 1..=size[1] {
-    let pair = input
-      .lines()
-      .nth(i)
-      .unwrap()
-      .trim()
-      .split_whitespace()
-      .map(|s| s.parse::<i32>().unwrap())
-      .collect::<Vec<i32>>();
-    edges.push(pair);
+  let (n, edges) = gutil::read_graph("inputs/dij.txt").unwrap();
+  let distance = dij(n, edges, 1);
+  for dist in distance {
+    print!("{} ", dist);
   }
-  let distance = dij(size[0], edges, 1);
-  for (v, dist) in &distance {
-    if *dist == std::i32::MAX {
-      print!("-1 ");
-    } else {
-      print!("{} ", dist);
-    }
-  }
-
   println!("");
   Ok(())
+}
+#[test]
+fn test_dij() {
+  let edges = vec![vec![1, 2, 3], vec![1, 4, 5], vec![4, 3, 2], vec![3, 2, -10]];
+  assert_eq!(vec![0, -3, 7, 5], dij(4, edges, 1));
 }

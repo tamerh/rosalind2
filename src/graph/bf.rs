@@ -1,10 +1,11 @@
+use crate::graph::gutil;
 use petgraph::graph::Graph;
 use std::collections::{BTreeMap, HashSet};
 
 // Bellman-Ford algorithm is a small changes to the Dijkstra dij.rs by checking the negihbours in all repeating steps
 // this allows the negative edges taken into account accurately.
 // Note: negative-weight cycles are checked in nwc.rs
-pub fn bf(n: usize, edges: Vec<Vec<i32>>, start: usize) {
+pub fn bf(n: usize, edges: Vec<Vec<i32>>, start: usize) -> Vec<String> {
   let mut g = Graph::new();
   let mut nodes = BTreeMap::new();
 
@@ -72,41 +73,29 @@ pub fn bf(n: usize, edges: Vec<Vec<i32>>, start: usize) {
     }
   }
 
+  let mut res = Vec::new();
   for (_, dist) in &distance {
     if *dist == std::i32::MAX {
-      print!("x ");
+      res.push("x".to_owned());
     } else {
-      print!("{} ", dist);
+      res.push(dist.to_string());
     }
   }
-
-  println!("");
+  res
 }
 
 pub fn solve() -> std::io::Result<()> {
-  let input = std::fs::read_to_string("inputs/bf.txt").unwrap();
-  // pass the first size line
-  let size = input
-    .lines()
-    .nth(0)
-    .unwrap()
-    .split_whitespace()
-    .map(|s| s.parse::<usize>().unwrap())
-    .collect::<Vec<usize>>();
-
-  let n = size[0];
-  let mut edges = Vec::new();
-  for i in 1..=size[1] {
-    let pair = input
-      .lines()
-      .nth(i)
-      .unwrap()
-      .trim()
-      .split_whitespace()
-      .map(|s| s.parse::<i32>().unwrap())
-      .collect::<Vec<i32>>();
-    edges.push(pair);
+  let (n, edges) = gutil::read_graph("inputs/bf.txt").unwrap();
+  let res = bf(n, edges, 1);
+  for r in res {
+    print!("{} ", r);
   }
-  bf(size[0], edges, 1);
+  println!("");
   Ok(())
+}
+
+#[test]
+fn test_bf() {
+  let edges = vec![vec![1, 2, 3], vec![1, 4, 5], vec![4, 3, 2], vec![3, 2, -10]];
+  assert_eq!(vec!["0", "-3", "7", "5"], bf(4, edges, 1));
 }
