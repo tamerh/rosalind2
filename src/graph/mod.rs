@@ -7,6 +7,7 @@ pub mod dag;
 pub mod ddeg;
 pub mod deg;
 pub mod dij;
+pub mod gs;
 pub mod gutil;
 pub mod hdag;
 pub mod inod;
