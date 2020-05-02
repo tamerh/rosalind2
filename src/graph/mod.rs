@@ -12,6 +12,7 @@ pub mod hdag;
 pub mod inod;
 pub mod lrep;
 pub mod nwc;
+pub mod sc;
 pub mod scc;
 pub mod sdag;
 pub mod sq;
