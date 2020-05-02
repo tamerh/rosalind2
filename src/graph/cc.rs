@@ -1,7 +1,8 @@
+use super::gutil;
 use petgraph::graph::Graph;
 use std::collections::{BTreeMap, HashSet, VecDeque};
 
-fn cc(n: usize, edges: Vec<Vec<usize>>) -> usize {
+pub fn cc(n: usize, edges: Vec<Vec<i32>>) -> usize {
   let mut g = Graph::new_undirected();
   let mut nodes = BTreeMap::new();
 
@@ -10,9 +11,9 @@ fn cc(n: usize, edges: Vec<Vec<usize>>) -> usize {
     nodes.insert(i, node);
   }
   for e in &edges {
-    let x = *nodes.get(&e[0]).unwrap();
+    let x = *nodes.get(&(e[0] as usize)).unwrap();
 
-    let y = *nodes.get(&e[1]).unwrap();
+    let y = *nodes.get(&(e[1] as usize)).unwrap();
 
     g.add_edge(x, y, 1);
   }
@@ -62,29 +63,7 @@ fn cc(n: usize, edges: Vec<Vec<usize>>) -> usize {
 }
 
 pub fn solve() -> std::io::Result<()> {
-  let input = std::fs::read_to_string("inputs/cc.txt").unwrap();
-  // pass the first size line
-  let size = input
-    .lines()
-    .nth(0)
-    .unwrap()
-    .split_whitespace()
-    .map(|s| s.parse::<usize>().unwrap())
-    .collect::<Vec<usize>>();
-
-  let n = size[0];
-  let mut edges = Vec::new();
-  for i in 1..=size[1] {
-    let pair = input
-      .lines()
-      .nth(i)
-      .unwrap()
-      .trim()
-      .split_whitespace()
-      .map(|s| s.parse::<usize>().unwrap())
-      .collect::<Vec<usize>>();
-    edges.push(pair);
-  }
-  println!("{}", cc(size[0], edges));
+  let (n, edges) = gutil::read_graph("inputs/cc.txt").unwrap();
+  println!("{}", cc(n, edges));
   Ok(())
 }
