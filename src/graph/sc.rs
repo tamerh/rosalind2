@@ -5,7 +5,7 @@ pub fn sc(all_graphs: Vec<(usize, Vec<Vec<i32>>)>) -> Vec<i32> {
 
   let mut res = Vec::new();
   for (n, edges) in all_graphs {
-    let (all_scc, tg, nodes) = scc::scc(n, edges);
+    let (all_scc, tg) = scc::scc(n, edges);
     //println!("all scc {:?}", all_scc);
     if all_scc.len() == 1 {
       res.push(1);
@@ -18,8 +18,7 @@ pub fn sc(all_graphs: Vec<(usize, Vec<Vec<i32>>)>) -> Vec<i32> {
       let mut found = false;
       'outer: for n1 in s1 {
         for n2 in s2 {
-          if let Some(_) = tg.find_edge_undirected(*nodes.get(n1).unwrap(), *nodes.get(n2).unwrap())
-          {
+          if let Some(_) = tg.find_edge_undirected(*n1, *n2) {
             found = true;
             break 'outer;
           }

@@ -20,3 +20,4 @@ pub mod sq;
 pub mod suff;
 pub mod trie;
 pub mod ts;
+pub mod twosat;

@@ -6,7 +6,7 @@ pub fn gs(all_graphs: Vec<(usize, Vec<Vec<i32>>)>) -> Vec<i32> {
 
   let mut res = Vec::new();
   for (n, edges) in all_graphs {
-    let (all_scc, g, nodes) = scc::scc(n, edges);
+    let (all_scc, g) = scc::scc(n, edges);
     //println!("all scc {:?}", all_scc);
     if all_scc.len() == 1 {
       res.push(1);
@@ -19,8 +19,7 @@ pub fn gs(all_graphs: Vec<(usize, Vec<Vec<i32>>)>) -> Vec<i32> {
       let mut found = false;
       'outer: for n1 in s1 {
         for n2 in s2 {
-          if let Some(_) = g.find_edge_undirected(*nodes.get(n1).unwrap(), *nodes.get(n2).unwrap())
-          {
+          if let Some(_) = g.find_edge_undirected(*n1, *n2) {
             found = true;
             break 'outer;
           }
@@ -43,12 +42,8 @@ pub fn gs(all_graphs: Vec<(usize, Vec<Vec<i32>>)>) -> Vec<i32> {
     if is_sc {
       // find root of the DAG
       for n in all_scc.get(0).unwrap() {
-        if g
-          .edges_directed(*nodes.get(n).unwrap(), EdgeDirection::Incoming)
-          .count()
-          == 0
-        {
-          res.push(*n as i32);
+        if g.edges_directed(*n, EdgeDirection::Incoming).count() == 0 {
+          res.push(g[*n] as i32);
         }
       }
     } else {

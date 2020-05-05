@@ -27,46 +27,52 @@ pub fn build_petegraph_undirected(
   (g, nodes)
 }
 
-pub fn build_petegraph_directed(
-  n: usize,
-  edges: &Vec<Vec<i32>>,
-) -> (Graph<usize, i32>, BTreeMap<usize, NodeIndex>) {
-  let mut g = Graph::new();
+pub fn build_petegraph_directed(edges: &Vec<Vec<i32>>) -> Graph<i32, i32> {
+  let mut g = Graph::<i32, i32>::new();
   let mut nodes = BTreeMap::new();
 
-  for i in 1..=n {
-    let node = g.add_node(i);
-    nodes.insert(i, node);
-  }
   for e in edges {
-    let x = *nodes.get(&(e[0] as usize)).unwrap();
+    if !nodes.contains_key(&e[0]) {
+      let node = g.add_node(e[0]);
+      nodes.insert(&e[0], node);
+    }
+    let x = *nodes.get(&e[0]).unwrap();
 
-    let y = *nodes.get(&(e[1] as usize)).unwrap();
+    if !nodes.contains_key(&e[1]) {
+      let node = g.add_node(e[1]);
+      nodes.insert(&e[1], node);
+    }
+
+    let y = *nodes.get(&e[1]).unwrap();
 
     g.add_edge(x, y, e[2]);
   }
-  (g, nodes)
+
+  g
 }
 
-pub fn build_petegraph_directed_transpoze(
-  n: usize,
-  edges: &Vec<Vec<i32>>,
-) -> (Graph<usize, i32>, BTreeMap<usize, NodeIndex>) {
-  let mut g = Graph::new();
+pub fn build_petegraph_directed_transpoze(n: usize, edges: &Vec<Vec<i32>>) -> Graph<i32, i32> {
+  let mut g = Graph::<i32, i32>::new();
   let mut nodes = BTreeMap::new();
 
-  for i in 1..=n {
-    let node = g.add_node(i);
-    nodes.insert(i, node);
-  }
   for e in edges {
-    let x = *nodes.get(&(e[0] as usize)).unwrap();
+    if !nodes.contains_key(&e[0]) {
+      let node = g.add_node(e[0]);
+      nodes.insert(&e[0], node);
+    }
+    let x = *nodes.get(&e[0]).unwrap();
 
-    let y = *nodes.get(&(e[1] as usize)).unwrap();
+    if !nodes.contains_key(&e[1]) {
+      let node = g.add_node(e[1]);
+      nodes.insert(&e[1], node);
+    }
+
+    let y = *nodes.get(&e[1]).unwrap();
 
     g.add_edge(y, x, e[2]);
   }
-  (g, nodes)
+
+  g
 }
 
 pub fn read_graph(path: &str) -> std::io::Result<(usize, Vec<Vec<i32>>)> {
