@@ -2,6 +2,7 @@ pub mod aspc;
 pub mod cat;
 pub mod mmch;
 pub mod motz;
+pub mod rnas;
 pub mod sset;
 
 pub fn factorial(num: u64) -> u128 {
