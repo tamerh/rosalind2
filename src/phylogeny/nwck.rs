@@ -4,11 +4,11 @@ use taxonomy::*;
 
 // Dist(n1, n2) = Dist(root, n1) + Dist(root, n2) - 2*Dist(root, lca)
 // lca -> lowest common ancestor
-fn nwck(trees: Vec<&str>) -> Vec<i32> {
+pub fn nwck(trees: Vec<String>) -> Vec<f32> {
   let mut res = Vec::new();
   let mut i = 0;
   while i < trees.len() {
-    let nw = *trees.get(i).unwrap();
+    let nw = trees.get(i).unwrap();
     let mut iter = trees.get(i + 1).unwrap().split_ascii_whitespace();
     let n1 = iter.next().unwrap();
     let n2 = iter.next().unwrap();
@@ -23,24 +23,24 @@ fn nwck(trees: Vec<&str>) -> Vec<i32> {
     // lca to to root distance
     let lca_root_dist = dist_to_root(&tax, lca, root);
 
-    res.push(n1_root_dist + n2_root_dist - 2 * lca_root_dist);
+    res.push(n1_root_dist + n2_root_dist - 2. * lca_root_dist);
     i += 2;
   }
   res
 }
 
-fn dist_to_root(tax: &GeneralTaxonomy, node: &str, root: &str) -> i32 {
-  let mut res = 0;
+fn dist_to_root(tax: &GeneralTaxonomy, node: &str, root: &str) -> f32 {
+  let mut res = 0.;
   let mut parent = node;
   loop {
     if parent == root {
       break;
     }
-    parent = taxonomy::Taxonomy::<&str, _>::parent(tax, parent)
+    let p = taxonomy::Taxonomy::<&str, _>::parent(tax, parent)
       .unwrap()
-      .unwrap()
-      .0;
-    res += 1;
+      .unwrap();
+    parent = p.0;
+    res += p.1;
   }
   res
 }
@@ -50,7 +50,7 @@ pub fn solve() -> io::Result<()> {
   let mut trees = Vec::new();
   for elem in input.lines() {
     if elem.len() > 0 {
-      trees.push(elem);
+      trees.push(elem.replace("):", ")unlabled:")); // workaround for taxonomy library
     }
   }
 
