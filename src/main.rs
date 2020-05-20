@@ -1,9 +1,9 @@
 use rosalind2::combinatorics::rnas;
 use rosalind2::graph::sc;
 use rosalind2::graph::scc;
-use rosalind2::phylogeny::nkew;
+use rosalind2::phylogeny::ctlb;
 
 fn main() {
-    nkew::solve();
+    ctlb::solve();
     // gs::solve();
 }

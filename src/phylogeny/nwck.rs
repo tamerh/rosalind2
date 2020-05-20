@@ -29,7 +29,7 @@ pub fn nwck(trees: Vec<String>) -> Vec<f32> {
   res
 }
 
-fn dist_to_root(tax: &GeneralTaxonomy, node: &str, root: &str) -> f32 {
+pub fn dist_to_root(tax: &GeneralTaxonomy, node: &str, root: &str) -> f32 {
   let mut res = 0.;
   let mut parent = node;
   loop {
