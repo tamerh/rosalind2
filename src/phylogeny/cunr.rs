@@ -8,10 +8,13 @@ pub fn solve() -> io::Result<()> {
   let input = std::fs::read_to_string("inputs/cunr.txt").unwrap();
   let mut leaves = input.lines().next().unwrap().parse::<i32>().unwrap();
 
+  leaves = leaves * 2 - 5;
+
   let mut res = 1;
 
   while leaves > 0 {
-    res *= leaves;
+    // (2n-5)!!
+    res *= leaves % 1_000_000;
     leaves -= 2;
   }
 
